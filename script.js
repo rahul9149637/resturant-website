@@ -1,4 +1,4 @@
-// Mobile Menu Toggle
+
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -6,7 +6,7 @@ if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         
-        // Animate hamburger icon
+
         const spans = mobileMenuToggle.querySelectorAll('span');
         spans[0].style.transform = navLinks.classList.contains('active') 
             ? 'rotate(45deg) translateY(9px)' 
@@ -18,7 +18,7 @@ if (mobileMenuToggle) {
     });
 }
 
-// Close mobile menu when clicking on a link
+
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -29,7 +29,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Header scroll effect
+
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Smooth scroll for anchor links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -64,7 +64,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll indicator animation
 const scrollIndicator = document.querySelector('.scroll-indicator');
 if (scrollIndicator) {
     scrollIndicator.addEventListener('click', () => {
@@ -90,7 +89,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe menu items
+
 document.querySelectorAll('.menu-item').forEach((item, index) => {
     item.style.opacity = '0';
     item.style.transform = 'translateY(30px)';
@@ -98,7 +97,6 @@ document.querySelectorAll('.menu-item').forEach((item, index) => {
     observer.observe(item);
 });
 
-// Observe gallery items
 document.querySelectorAll('.gallery-item').forEach((item, index) => {
     item.style.opacity = '0';
     item.style.transform = 'scale(0.9)';
@@ -106,7 +104,7 @@ document.querySelectorAll('.gallery-item').forEach((item, index) => {
     observer.observe(item);
 });
 
-// Observe testimonial cards
+
 document.querySelectorAll('.testimonial-card').forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
@@ -114,14 +112,14 @@ document.querySelectorAll('.testimonial-card').forEach((card, index) => {
     observer.observe(card);
 });
 
-// Form validation and submission
+
 const reservationForm = document.getElementById('reservationForm');
 
 if (reservationForm) {
     reservationForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form values
+        
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
@@ -132,20 +130,20 @@ if (reservationForm) {
             message: document.getElementById('message').value
         };
         
-        // Validate form
+      
         if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time || !formData.guests) {
             showNotification('Please fill in all required fields', 'error');
             return;
         }
         
-        // Email validation
+      
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             showNotification('Please enter a valid email address', 'error');
             return;
         }
         
-        // Date validation (must be in the future)
+        
         const selectedDate = new Date(formData.date);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -155,26 +153,26 @@ if (reservationForm) {
             return;
         }
         
-        // Simulate form submission
+     
         showNotification('Reservation request submitted successfully! We will contact you soon.', 'success');
         reservationForm.reset();
     });
 }
 
-// Notification function
+
 function showNotification(message, type) {
-    // Remove existing notification if any
+    
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
-    // Create notification element
+    
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
     
-    // Add styles
+
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -191,14 +189,14 @@ function showNotification(message, type) {
     
     document.body.appendChild(notification);
     
-    // Remove after 5 seconds
+    
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease-out';
         setTimeout(() => notification.remove(), 300);
     }, 5000);
 }
 
-// Add notification animations to CSS dynamically
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
@@ -225,7 +223,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Add parallax effect to hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -235,7 +232,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Gallery lightbox effect (simple version)
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
         const img = item.querySelector('img');
@@ -303,7 +299,7 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     });
 });
 
-// Add fade animations to style
+
 const fadeStyle = document.createElement('style');
 fadeStyle.textContent = `
     @keyframes fadeIn {
